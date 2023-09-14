@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Flipkart Clone</title>
+        <style>
+            * {
+                font-family: 'Segoe UI', Tahoma;
+                margin: 0;
+            }
+            body {
+                overflow-y: hidden;
+            }
+            .item {
+                margin: 5px;
+                width: 300px;
+                height: 400px;
+                border: 1.5px solid rgb(25, 25, 25);
+                
+                
+            }
+            .item-title {
+                text-align: center;
+                padding: 10px;
+                font-size: 25px;
+                font-weight: 600;
+                font-family: 'Times New Roman', Times, serif;
+                font-style: italic;
+                
+            }
+            /*.item-image {
+                width: 250px;
+                height: 150px;
+                background-color: rgb(25, 25, 25);
+                margin-bottom: 5px;
+            }*/
+            .item-rate {
+                font-size: 20px;
+                font-weight: 700;
+                text-align: center;
+                font-style: italic;
+            }
+            .item-body {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+            .add-button > button{
+                width: 45%;
+                margin: 5px;
+                font-weight: 500;
+                padding: 5px;
+                text-align: center;
+                background-color: black;
+                color: azure;
+            }
+
+            .navbar {
+                display: flex;
+                height: 75px;
+                box-shadow: 7.5px 7.5px rgba(25, 25, 25, 0.1);
+                align-items: center;
+                border: 1.5px solid rgb(25, 25, 25);
+                justify-content: space-between;
+                background-color: aquamarine;
+            }
+
+            .navbar-title {
+                padding: 10px;
+            }
+
+            .nav-items ul {
+                display: flex;
+                align-items: center;
+                list-style: none;
+            }
+
+            .nav-items ul > li {
+                padding: 15px;
+                margin: 10px;
+                font-weight: bold;
+            }
+
+            .avatar {
+                width: 45px;
+                height: 45px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                border-radius: 50%;
+                background-color: rgb(25, 25, 25);
+            }
+
+            .main-content {
+                display: flex;
+                
+            }
+
+            .left-side {
+                flex: 25%;
+                padding: 25px;
+                height: 82.5vh;
+                overflow-y: scroll;
+                border: 2px solid black;
+                box-shadow: 7.5px 7.5px rgba(25, 25, 25, 0.1);
+                
+                background: linear-gradient(200deg,olive,lightgreen);
+            }
+            .right-side {
+                flex: 75%;
+                flex-wrap: wrap;
+                padding: 15px;
+                display: flex;
+                height: 85.25vh;
+                overflow-y: scroll;
+                justify-content: space-evenly;
+                border: 2px solid black;
+                background: linear-gradient(300deg,red,yellow);
+                
+                
+                
+            }
+
+            .cart-body {
+                margin-left: 25px;
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+
+            .cart-title {
+                text-transform: uppercase;
+                text-align: center;
+            }
+
+            .cart-total {
+                width: 150px;
+                height: 30px;
+                margin: 0 auto;
+                display: flex;
+                padding: 10px;
+                align-items: center;
+                justify-content: space-evenly;
+                border: 2px solid rgb(25, 25, 25);
+                
+            }
+
+            #total {
+                font-size: 25px;
+                font-style: italic;
+                font-weight: 500;
+            }
+
+            table {
+                margin-bottom: 10px;
+                border-collapse: collapse;
+            }
+
+            th, td {
+                padding: 7.5px;
+                text-align: center;
+                border: 2px solid rgb(25, 25, 25);
+            }
+
+            #no-items {
+                color: ;
+                font-style: italic;
+                text-align: center;
+                font-weight: 500;
+                margin: 10px 0 10px;
+                display: none;
+            }
+            .end{
+                font-size: 30px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                font-weight: bold;
+            }
+            h3{
+                font-size: 20px;
+                font-family: 'Times New Roman', Times, serif;
+                font-weight: bold;
+            }
+
+            
+        </style>
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="navbar-title">
+                <h3>Flipkart Clone</h3>
+            </div>
+            <div class="nav-items">
+                <ul>
+                    <li>Home</li>
+                    <li>About</li>
+                    <li>Cart</li>
+                    <li>
+                        <div class="avatar">
+                            AM
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="left-side">
+                <div class="cart-title">
+                    <h3>My Cart</h3>
+                </div>
+                <div class="cart-body">
+                    <div id="no-items">
+                        --- Please Add Items To Cart ---
+                    </div>
+                    <table id="bill">
+                        <tr>
+                            <th>PID</th>
+                            <th>NAME</th>
+                            <th>RATE</th>
+                            <th>NUM</th>
+                            <th>PRICE</th>
+                        </tr>
+                        <tr id="1"></tr>
+                        <tr id="2"></tr>
+                        <tr id="3"></tr>
+                        <tr id="4"></tr>
+                        <tr id="5"></tr>
+                        <tr id="6"></tr>
+                        <tr id="7"></tr>
+                        <tr id="8"></tr>
+                        <tr id="9"></tr>
+                        <tr id="10"></tr>
+                        
+                    </table>
+                </div>
+                <div class="cart-total">
+                    <div><h3>TOTAL</h3></div>
+                    <div id="total">$ 0</div>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+                <div class="shopping">
+                    <img src="shopping.jpg" alt="shopping-image" height="300px" width="300px">
+                </div>
+                <br/>
+                <div class="end">
+                    <footer>
+                        WWW.ARIVUU.COM
+                    </footer>
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="item">
+                    <div class="item-title">Plain-Shirt</div>
+                    <div class="item-image">
+                        <img src="Plainshirt.jpeg" alt="shirt-image" height="180px" width="300px">
+                    </div> 
+                    <div class="item-body">
+                        Men Regular Fit Solid Spread Collar Casual Shirt
+                        <br/>
+                        67,442 ratings and 16,201 reviews
+                    </div>
+                    <div class="item-rate">
+                        $ 140
+                    </div>
+                    <div class="add-button">
+                        <button class="add" onclick="addToCart(1)"> Add to Cart </button>
+                        <button class="drop" onclick="dropFromCart(1)"> Remove </button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-title">Checked-Shirt</div>
+                    <div class="item-image">
+                        <img src="checked-shirt.jpeg" alt="shirt-image" height="180px" width="300px">
+                    </div>
+                    <div class="item-body">
+                        Men Slim Fit Checkered Spread Collar Casual Shirt
+                        <br/>
+                        27,442 ratings and 10,201 reviews
+
+                
+                    </div>
+                    <div class="item-rate">
+                        $ 90
+                    </div>
+                    <div class="add-button">
+                        <button class="add" onclick="addToCart(2)"> Add to Cart </button>
+                        <button class="drop" onclick="dropFromCart(2)"> Remove </button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-title">Girls-Skirt</div>
+                    <div class="item-image">
+                        <img src="skirts.jpeg" alt="shirt-image" height="180px" width="300px">
+                    </div>
+                    <div class="item-body">
+                        Feels like a Cindrella wear
+                        <br/>
+                        3000 Reviews and 4098 Ratings
+                    </div>
+                    <div class="item-rate">
+                        $ 120
+                    </div>
+                    <div class="add-button">
+                        <button class="add" onclick="addToCart(3)"> Add to Cart </button>
+                        <button class="drop" onclick="dropFromCart(3)"> Remove </button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-title">Pullingo-Shirt</div>
+                    <div class="item-image">
+                        <img src="pullimgo-shirt.jpeg" alt="shirt-image" height="180px" width="300px">
+
+                    </div>
+                    <div class="item-body">
+                        Men Slim Fit Printed Spread Collar Casual Shirt
+                        <br/>
+                        27,002 ratings and 8,201 reviews
+
+                    </div>
+                    <div class="item-rate">
+                        $ 165
+                    </div>
+                    <div class="add-button">
+                        <button class="add" onclick="addToCart(4)"> Add to Cart </button>
+                        <button class="drop" onclick="dropFromCart(4)"> Remove </button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-title">White-Shirt</div>
+                    <div class="item-image">
+                        <img src="White-shirt.jpeg" alt="shirt-image" height="180px" width="300px">
+                    </div>
+                    <div class="item-body">
+                        Men Regular Fit Solid Casual Shirt
+                        <br/>
+                        17,002 ratings and 6,201 reviews
+
+                    </div>
+                    <div class="item-rate">
+                        $ 34
+                    </div>
+                    <div class="add-button">
+                        <button class="add" onclick="addToCart(5)"> Add to Cart </button>
+                        <button class="drop" onclick="dropFromCart(5)"> Remove </button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-title">Denim-Shirt</div>
+                    <div class="item-image">
+                        <img src="Denim-shirt.jpeg" alt="shirt-image" height="180px" width="300px">
+                    </div>
+                    <div class="item-body">
+                        Men slim fit Blue Denim Shirt
+                        <br/>
+                        8,092 reviews and 600 ratings
+                    </div>
+                    <div class="item-rate">
+                        $ 112
+                    </div>
+                    <div class="add-button">
+                        <button class="add" onclick="addToCart(6)"> Add to Cart </button>
+                        <button class="drop" onclick="dropFromCart(6)"> Remove </button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-title">T-Shirt</div>
+                    <div class="item-image">
+                        <img src="Checked-T-Shirt.jpeg" alt="shirt-image" height="180px" width="300px">
+                    </div>
+                    <div class="item-body">
+                        Men Striped Round Neck Cotton Blend Blue, yellow T-Shirt.
+                        <br/>
+                    
+                        30,119 ratings and 2,002 reviews
+                    </div>
+                    <div class="item-rate">
+                        $ 189
+                    </div>
+                    <div class="add-button">
+                        <button class="add" onclick="addToCart(7)"> Add to Cart </button>
+                        <button class="drop" onclick="dropFromCart(7)"> Remove </button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-title">Sports-Shoe</div>
+                    <div class="item-image">
+                        <img src="shoe.jpeg" alt="shirt-image" height="180px" width="300px">
+                    </div>
+                    <div class="item-body">
+                        Men's Sports wear Classy Looking
+                        <br/>
+                        10,987 reviews and 2000 ratings
+                    </div>
+                    <div class="item-rate">
+                        $ 140
+                    </div>
+                    <div class="add-button">
+                        <button class="add" onclick="addToCart(8)"> Add to Cart </button>
+                        <button class="drop" onclick="dropFromCart(8)"> Remove </button>
+                    </div>
+                </div>
+               
+                <div class="item">
+                    <div class="item-title">Hand-Bag</div>
+                    <div class="item-image">
+                        <img src="handbag.jpeg" alt="shirt-image" height="180px" width="300px">
+                    </div>
+                    <div class="item-body">
+                        Women Tan Satchel - Extra Spacious
+                        <br/>
+                        3056 Reviews and 5000 Ratings
+                    </div>
+                    <div class="item-rate">
+                        $ 210
+                    </div>
+                    <div class="add-button">
+                        <button class="add" onclick="addToCart(9)"> Add to Cart </button>
+                        <button class="drop" onclick="dropFromCart(9)"> Remove </button>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-title">Blue-Jean</div>
+                    <div class="item-image">
+                        <img src="Blue jean.jpeg" alt="shirt-image" height="180px" width="300px">
+                    </div>
+                    <div class="item-body">
+                        Men Slim Mid Rise Blue Jeans
+                        <br/>
+                        12,093 Reviews and 5890 Ratings
+                        
+                    </div>
+                    <div class="item-rate">
+                        $ 45
+                    </div>
+                    <div class="add-button">
+                        <button class="add" onclick="addToCart(10)"> Add to Cart </button>
+                        <button class="drop" onclick="dropFromCart(10)"> Remove </button>
+                    </div>
+                </div>
+                
+                    
+        </div>
+        <script>
+            let P = [ 140, 90, 120, 165, 34, 112, 189, 140, 210, 45, 190, 189, 99, 199, 299, 89, 149, 249, 69, 219 ], total = 0, totalprice = 0;
+            let C = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
+            function setState() {
+                total = 0, totalprice = 0;
+                for(let i = 0; i < C.length; i++)   {
+                    total += C[i];
+                    totalprice += P[i] * C[i];
+                }
+                console.log(C, total, totalprice);
+            }
+            function checkTotal() {
+                setState();
+                if(total === 0) {
+                    document.getElementById('bill').style.display = 'none';
+                    document.getElementById('no-items').style.display = 'block';
+                    return false;
+                }   else {
+                    document.getElementById('bill').style.display = 'block';
+                    document.getElementById('no-items').style.display = 'none';
+                    return true;
+                }
+            }
+            function reflectTable() {
+                if(checkTotal())    {
+                    for(let i = 0; i < C.length; i++) {
+                        if(C[i] > 0)    {
+                            document.getElementById((i + 1) + '').innerHTML = 
+                                '<td>' + (i + 1) + '</td>' +
+                                '<td>' + 'Product ' + (i + 1) + '</td>' +
+                                '<td>' + P[i] + '</td>' +
+                                '<td>' + C[i] +'</td>' +
+                                '<td>' + P[i] * C[i] + '</td>';
+                        }   else document.getElementById((i + 1) + '').innerHTML = "";
+                    }   
+                }   document.getElementById('total').innerHTML = ' $ ' + totalprice;
+            }
+            function addToCart(PID) {
+                C[PID - 1]++;
+                reflectTable();
+            }
+            function dropFromCart(PID) {
+                if(C[PID - 1] > 0) C[PID - 1]--;
+                reflectTable();
+            }   reflectTable();
+        </script>
+    </body>
+</html>
